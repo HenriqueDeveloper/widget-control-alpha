@@ -1,0 +1,40 @@
+{
+  "widget": {
+    "name": "Ajustes ALPHA DC",
+    "description": "Controle de ajustes visuais e scripts personalizados (widget adaptado para Kommo)",
+    "version": "1.1",
+    "interface_version": 2
+  },
+  "locations": [
+    "settings"
+  ],
+  "settings": {
+    "templates": [
+      "index.html"
+    ],
+    "fields": [
+      {
+        "id": "blocked_users",
+        "name": "IDs de Usuários bloqueados (separados por vírgula)",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "custom_css",
+        "name": "CSS personalizado",
+        "type": "textarea"
+      },
+      {
+        "id": "custom_js",
+        "name": "JS personalizado",
+        "type": "textarea"
+      }
+    ]
+  },
+  "js": [
+    "script.js"
+  ],
+  "css": [
+    "styles.css"
+  ]
+}
