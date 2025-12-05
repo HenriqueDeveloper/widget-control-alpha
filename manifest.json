@@ -6,9 +6,7 @@
     "version": "1.0.0",
     "interface_version": 2,
     "init_once": false,
-    "locale": [
-      "pt"
-    ],
+    "locale": ["pt"],
     "installation": true,
     "support": {
       "link": "https://henriquedeveloper.github.io/widget-control-alpha/",
@@ -16,34 +14,15 @@
     }
   },
 
-  "locations": [
-    "settings",
-    "everywhere"
+  "locations": ["settings", "widget"],
+
+  "js": [
+    "https://henriquedeveloper.github.io/widget-control-alpha/script.js"
   ],
 
-  "settings": {
-    "fields": [
-      {
-        "key": "blockedMenus",
-        "name": "Menus Bloqueados",
-        "type": "multiselect",
-        "options": [
-          { "value": "start", "label": "Início" },
-          { "value": "whatsapp", "label": "WhatsApp" }
-        ]
-      },
-      {
-        "key": "customCSS",
-        "name": "CSS Personalizado",
-        "type": "textarea"
-      },
-      {
-        "key": "customJS",
-        "name": "JS Personalizado",
-        "type": "textarea"
-      }
-    ]
-  },
+  "css": [
+    "https://henriquedeveloper.github.io/widget-control-alpha/styles.css"
+  ],
 
   "permissions": [
     "settings",
