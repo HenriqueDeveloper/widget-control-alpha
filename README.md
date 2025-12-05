@@ -1,201 +1,249 @@
-📘 Documentação do Widget — Custom Control (Kommo CRM)
-📌 Descrição
+📦 Widget “Ajustes ALPHA DC” – Documentação Oficial
+🧩 Sobre o Widget
 
-O Custom Control é um widget para o Kommo CRM que permite ao administrador:
+O Ajustes ALPHA DC é um widget personalizado para o Kommo (amoCRM) que permite criar, editar, salvar e organizar ajustes visuais e scripts personalizados diretamente dentro do painel de integrações do CRM.
 
-Bloquear o acesso de determinados usuários aos menus Início e WhatsApp;
+Ele funciona como uma interface interna onde o usuário pode cadastrar:
 
-Adicionar CSS personalizado ao CRM;
+CSS personalizado
 
-Adicionar JavaScript personalizado ao CRM;
+Código JavaScript (JQuery)
 
-Criar um ambiente visual mais controlado e seguro.
+Regras de ajustes
 
-O widget serve como uma camada de personalização e restrição dentro do CRM.
+Configurações com persistência local
 
-📂 Estrutura de Arquivos
-widget-kommo-control/
- ├── manifest.json
- ├── script.js
- └── styles.css
+O widget foi projetado para ser simples, eficiente e totalmente integrado ao ambiente do Kommo.
+
+📁 Estrutura de Arquivos do Widget
+
+O widget é composto por 4 arquivos obrigatórios, todos incluídos no pacote final:
 
 manifest.json
+script.js
+styles.css
+index.html
 
+📝 manifest.json
+
+Arquivo de configuração do widget para o Kommo.
 Define:
 
-Nome e descrição do widget
+Nome
+
+Descrição
 
 Versão
 
-Local onde o widget aparece
+Local onde será exibido (settings)
 
-Campos de configuração
+Templates (index.html)
 
-Scripts e estilos carregados
+Scripts e CSS a serem carregados
 
-script.js
+🧠 script.js
 
-Contém:
+Contém toda a lógica do widget e segue o padrão oficial do Kommo:
 
-Lógica para bloquear menus
+Usa RequireJS com define(['jquery'], function(){ ... })
 
-Leitura do usuário logado
+Implementa callbacks obrigatórios:
 
-Injeção de CSS e JS personalizados
+init
 
-styles.css
+render
 
-Estilos básicos do widget.
+bind_actions
 
-🚀 Como Hospedar o Widget
+settings
 
-O Kommo exige que todos os arquivos estejam hospedados PUBLICAMENTE.
+dpSettings
 
-Você pode usar:
+Exponibiliza funções globais para funcionar com os onclick do HTML
 
-1) Vercel (Recomendado)
+Faz persistência dos ajustes via localStorage
 
-Crie um repositório no GitHub
+🎨 styles.css
 
-Suba os arquivos
+Estilos próprios do widget.
+Inclui o visual original da interface e elementos de edição.
 
-Vá no site da Vercel → New Project
+🖥 index.html
 
-Conecte ao repositório
+Interface do widget que aparece dentro do Kommo na área:
 
-Faça o deploy
+Configurações → Integrações → Ajustes ALPHA DC
 
-A URL final será algo como:
+Interface inclui:
 
-https://seu-projeto.vercel.app/manifest.json
+Lista de ajustes
 
-2) GitHub Pages
+Botões de criar, editar e excluir
 
-Vá em Settings → Pages
+Editor de CSS e JS
 
-Point para branch main
+Navegação entre telas
 
-A URL será algo como:
+🧪 Funcionalidades Principais
+✔ Criar novos ajustes
 
-https://seuusuario.github.io/custom-control-widget/manifest.json
+Permite cadastrar ajustes contendo:
 
-3) Servidor próprio
+Nome do ajuste
 
-Basta colocar os arquivos em uma pasta pública acessível por HTTPS.
+Código CSS
 
-🛠 Instalação no Kommo CRM
+Código JavaScript (JQuery)
 
-Acesse o CRM
+✔ Editar ajustes existentes
 
-Vá em Configurações → Integrações
+Atualização de qualquer campo salvo anteriormente.
 
-Clique em Instalar por URL
+✔ Excluir ajustes
 
-Insira a URL do manifest.json
+Remove completamente o item da lista.
 
-Clique em Instalar
+✔ Persistência automática
 
-Se tudo estiver correto, a integração aparecerá na lista.
+Todos os ajustes são salvos em:
 
-⚙ Configuração Dentro do Kommo
+localStorage.alpha_dc_adjusts
 
-Ao acessar a integração instalada, você verá três campos:
 
-1️⃣ IDs de Usuários Bloqueados
+Isso significa que os dados são persistidos enquanto o widget estiver hospedado no mesmo domínio.
 
-Exemplo:
+✔ Interface responsiva e intuitiva
 
-12345, 67890
+O layout mantém o design original enviado pelo cliente.
 
+✔ Compatível com Kommo via RequireJS
 
-Esses usuários NÃO verão:
+Toda a lógica está adaptada ao ambiente sandbox do Kommo.
 
-Menu Início
+📤 Como Hospedar o Widget
 
-Menu WhatsApp
+O widget pode ser hospedado em qualquer ambiente web estático (HTTPS obrigatório):
 
-2️⃣ CSS Personalizado
+Opções recomendadas:
 
-Insira qualquer código CSS para modificar o visual do CRM.
+GitHub Pages (100% gratuito)
 
-Exemplo:
+Vercel (grátis e rápido)
 
-body {
-    background: #f5f5f5 !important;
-}
+Netlify
 
-3️⃣ JS Personalizado
+Servidor próprio HTTPS
 
-Insira JavaScript executado no carregamento do CRM.
+Na raiz do servidor devem existir exatamente estes arquivos:
 
-Exemplo:
+/
+|-- manifest.json
+|-- script.js
+|-- styles.css
+|-- index.html
 
-console.log("JS personalizado carregado!");
+🛠 Como Instalar no Kommo (Passo a Passo)
 
-👤 Como Obter o ID do Usuário no Kommo
+Acesse Kommo → Configurações (⚙️) → Integrações → Widgets.
 
-Vá em Configurações → Usuários
+Clique em Instalar por URL.
 
-Clique no usuário
+Cole o link HTTPS direto para o manifest.json, por exemplo:
 
-Na URL do navegador aparecerá:
+https://seu-dominio.com/manifest.json
 
-https://SEU-KOMMO.com/settings/users/12345
 
+ou
 
-➡ O número 12345 é o ID do usuário.
+https://seu-usuario.github.io/seu-repositorio/manifest.json
 
-🧪 Testes
-🔒 Teste de Bloqueio
 
-Adicione um ID ao campo “Usuários bloqueados”
+Clique em Instalar.
 
-Faça login com esse usuário
+Se tudo estiver correto, o widget aparecerá em:
 
-Os menus “Início” e “WhatsApp” devem desaparecer
+Configurações → Integrações → Ajustes ALPHA DC
 
-🎨 Teste de CSS
+📘 Detalhes Técnicos
+✔ Callbacks implementados:
 
-Cole:
+init() – Chamado quando o widget é inicializado
 
-body { background: #e3e3e3 !important; }
+render() – Carrega o template (index.html)
 
+bind_actions() – Gerencia ações internas
 
-Recarregue o CRM → o fundo deve mudar.
+settings() – Exibe configurações gerais
 
-⚙ Teste de JavaScript
+dpSettings() – (não utilizado, mas necessário segundo Kommo)
 
-Cole:
+✔ Como o index.html é carregado
 
-alert("JS carregado!");
+O arquivo é renderizado dentro do painel de integrações com:
 
+this.render_template({ body: './index.html' });
 
-Recarregue o CRM → o alerta deve aparecer.
+✔ Execução de funções inline
 
-📝 Considerações Finais
+O HTML possui funções inline como:
 
-O widget Custom Control foi criado para fornecer:
+<button onclick="newAdjust()">Novo Ajuste</button>
 
-Controle de permissões baseado no usuário
 
-Personalização visual ilimitada
+Portanto, o script expõe funções globalmente via:
 
-Extensões funcionais via JavaScript
+window.newAdjust = function(){ ... }
 
-Facilidade de administração
+✔ Salvamento local
 
-Ele não modifica dados sensíveis e não interfere nas operações internas do CRM além das configurações definidas pelo administrador.
+Os ajustes são salvos como JSON:
 
-📄 Suporte
+[
+  {
+    "name": "Ajuste 01",
+    "css": "body { background: red; }",
+    "js": "$('.btn').hide();"
+  }
+]
 
-Se você quiser:
+🧯 Solução de Problemas
+❗ O widget não aparece no Kommo
 
-Adicionar editor avançado (Monaco/ACE)
+Verifique se manifest.json está acessível via HTTPS
 
-Criar novos recursos
+Verifique se não há redirect no domínio
 
-Expandir as restrições de menus
+Abra o Console do navegador (F12 → Console)
 
-Criar um painel visual interativo
+❗ Botões não funcionam
 
-Basta solicitar.
+Verifique se script.js foi carregado
+
+Abra Network e confirme que o Kommo buscou o arquivo
+
+❗ Ajustes não salvam
+
+Certifique-se de que o domínio da hospedagem não muda
+
+Verifique se o navegador está permitindo localStorage
+
+📄 Permissões Necessárias
+
+Nenhuma permissão especial do Kommo é necessária.
+O widget se limita ao ambiente de configurações.
+
+☎ Suporte / Manutenção
+
+Caso deseje:
+
+Criar versão com backend
+
+Sincronizar ajustes entre usuários
+
+Criar regras de permissões reais
+
+Aplicar CSS/JS no front do Kommo
+
+Injetar scripts diretamente no CRM
+
+Podemos evoluir o widget facilmente.
