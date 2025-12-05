@@ -1,0 +1,31 @@
+{
+  "widget": {
+    "name": "Custom Control",
+    "description": "Controle de menus e códigos personalizados",
+    "version": "1.0",
+    "interface_version": 2
+  },
+  "locations": ["settings"],
+  "settings": {
+    "fields": [
+      {
+        "id": "blocked_users",
+        "name": "IDs de Usuários bloqueados (separados por vírgula)",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "custom_css",
+        "name": "CSS personalizado",
+        "type": "textarea"
+      },
+      {
+        "id": "custom_js",
+        "name": "JS personalizado",
+        "type": "textarea"
+      }
+    ]
+  },
+  "js": ["script.js"],
+  "css": ["styles.css"]
+}
